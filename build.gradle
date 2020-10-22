@@ -14,6 +14,7 @@ ext {
     seleniumVersion = '3.141.59'
     webdrivermanagerVersion = '3.2.0'
     junitVersion = '4.12'
+    appiumVersion = '7.3.0'
 }
 
 repositories {
@@ -23,6 +24,9 @@ repositories {
 dependencies {
     compile "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
     compile "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
+    // https://mvnrepository.com/artifact/io.appium/java-client
+    compile group: 'io.appium', name: 'java-client', version: '7.3.0'
+
     testCompile "junit:junit:${junitVersion}"
 }
 
