@@ -31,7 +31,7 @@ public class ToolTest {
     public void exampleTest()  throws Exception{
 
         toolsPage.openURL();
-        toolsPage.set_startDate("10/10/2020");
+        toolsPage.set_startDate("26/10/2020");
         toolsPage.filter_domain("com");
         toolsPage.filter();
        Assert.assertTrue(toolsPage.get_searchResult_count()>0);
