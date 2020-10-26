@@ -22,10 +22,11 @@ pipeline {
 
                script{
                     try {
-                    timeout(time: 1, unit: 'MINUTES') {
+                    timeout(time: 2, unit: 'MINUTES') {
 
                         // something that can fail
-                        sh 'mvn test -Dbrowser=chrome_remote'
+                        sh 'mvn test -Dbrowser=chrome_remote'$
+                        sh 'sleep 60'
                         } // timeout ends
 
                     } catch (FlowInterruptedException e) {
