@@ -25,7 +25,7 @@ pipeline {
                     timeout(time: 2, unit: 'MINUTES') {
 
                         // something that can fail
-                        sh 'mvn test -Dbrowser=chrome_remote'$
+                        sh 'mvn test -Dbrowser=chrome_remote'
                         sh 'sleep 60'
                         } // timeout ends
 
