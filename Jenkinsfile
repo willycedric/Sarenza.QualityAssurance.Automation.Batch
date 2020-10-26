@@ -22,7 +22,7 @@ pipeline {
 
                script{
                     try {
-                    timeout(time: 5, unit: 'MINUTES') {
+                    timeout(time: 1, unit: 'MINUTES') {
 
                         // something that can fail
                         sh 'mvn test -Dbrowser=chrome_remote'
