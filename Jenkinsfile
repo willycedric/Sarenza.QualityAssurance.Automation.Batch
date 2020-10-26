@@ -1,4 +1,4 @@
-
+ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 
 pipeline {
@@ -18,7 +18,7 @@ pipeline {
         }
         stage ('Test') {
             steps {
-                import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+               
                 retry(3) {
 
                 try {
