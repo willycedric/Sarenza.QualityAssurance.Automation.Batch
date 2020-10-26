@@ -31,11 +31,16 @@ public class DriverFactory {
                 WebDriverManager.chromedriver().setup();
                 _driver = new ChromeDriver();
                 break;
-            case CHROME_REMOTE:
+            case CHROME_REMOTE_LOCAL:
                 DesiredCapabilities chrome = new DesiredCapabilities();
                 chrome.setCapability("browserName", "chrome");
-                chrome.setCapability("applicationName","dev-test2");
-                _driver = new RemoteWebDriver(new URL("http://xm031w07:4444/wd/hub"), chrome);
+                _driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chrome);
+                break;
+            case CHROME_REMOTE:
+                DesiredCapabilities chrome_remote = new DesiredCapabilities();
+                chrome_remote.setCapability("browserName", "chrome");
+                chrome_remote.setCapability("applicationName","dev-test1");
+                _driver = new RemoteWebDriver(new URL("http://xm031w07:4444/wd/hub"), chrome_remote);
                 break;
             case FIREFOX_REMOTE:
                 DesiredCapabilities firefox = new DesiredCapabilities();

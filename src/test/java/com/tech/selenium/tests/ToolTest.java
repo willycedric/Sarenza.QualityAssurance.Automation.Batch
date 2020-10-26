@@ -28,7 +28,7 @@ public class ToolTest {
     }
 
     @Test
-    public void exampleTest(){
+    public void exampleTest()  throws Exception{
 
         toolsPage.openURL();
         toolsPage.set_startDate("10/10/2020");

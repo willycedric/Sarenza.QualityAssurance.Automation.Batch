@@ -50,19 +50,31 @@ public class ToolsPage {
     }
 
 
-    public void set_startDate(String date ){
+    public void set_startDate(String date ) throws Exception{
         _startDate.click();
         _startDate.clear();
         _startDate.sendKeys(date);
+        /*WebElement elt = waiter
+                .withMessage(String.format("Trying to fetch elements located by the selector %s",_items))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("dpLogFilterStartDate")));
+        elt.click();
+       elt.clear();
+      // String command = String.format("document.querySelector('#dpLogFilterStartDate').value='%s'", date);
+      // System.out.println(command);
+    String command;
+       _startDate.click();
+        _startDate.clear();
+        for (char c :date.toCharArray()
+                ) {
+
+            command = String.format("document.querySelector('#dpLogFilterStartDate').value='%s'", c);
+            js.executeScript(command);
+            Thread.sleep(1000);
+        }*/
     }
 
     public void set_endDate(String date){
-       WebElement elt = waiter
-        .withMessage(String.format("Trying to fetch elements located by the selector %s", _items))
-        .until(ExpectedConditions.visibilityOfElementLocated(By.id("dpLogFilterEndDate")));
-        String command = String.format("setTimeout(function(){ arguments[0].value = '%s' ;},1000)", date);
-        js.executeScript(command);
-        _endDate.click();
+         _endDate.click();
         _endDate.clear();
         _endDate.sendKeys(date);
     }

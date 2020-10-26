@@ -6,6 +6,7 @@ package com.tech.selenium.driverutil;
 public enum DriverType {
 
     CHROME,
+    CHROME_REMOTE_LOCAL,
     CHROME_REMOTE,
     FIREFOX,
     FIREFOX_REMOTE,
