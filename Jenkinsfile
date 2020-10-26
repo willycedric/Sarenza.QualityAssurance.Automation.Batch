@@ -1,4 +1,4 @@
- import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 
 pipeline {
@@ -16,17 +16,18 @@ pipeline {
                 '''
             }
         }
+
         stage ('Test') {
-            steps {
-               
-                retry(3) {
+                 retry(3) {
 
                 try {
 
-                    timeout(time: 1, unit: 'MINUTES') {
+                    timeout(time: 5, unit: 'MINUTES') {
 
                         // something that can fail
-                        sh 'mvn test -Dbrowser=chrome_remote'
+                        steps {
+                               sh 'mvn test -Dbrowser=chrome_remote'
+                        }
                     } // timeout ends
 
                 } catch (FlowInterruptedException e) {
@@ -37,7 +38,6 @@ pipeline {
                 } // try ends
 
                 } // retry end
-            }
             post {
                 success {
                     junit 'target/surefire-reports/**/*.xml'
@@ -46,4 +46,10 @@ pipeline {
         }
     }
 }
+
+
+
+
+
+
 
