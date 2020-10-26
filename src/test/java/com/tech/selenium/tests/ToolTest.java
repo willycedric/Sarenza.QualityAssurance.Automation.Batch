@@ -36,7 +36,7 @@ public class ToolTest {
         toolsPage.filter();
        Assert.assertTrue(toolsPage.get_searchResult_count()>0);
        toolsPage.toogle_lastest_log();
-       Assert.assertTrue(toolsPage.get_count_log_steps()==17);
+       Assert.assertTrue(toolsPage.get_count_log_steps()==16);
     }
 
     @After

@@ -18,11 +18,11 @@ pipeline {
         }
         stage ('Test') {
             steps {
-                retry(3) {
+                retry(6) {
 
                script{
                     try {
-                    timeout(time: 2, unit: 'MINUTES') {
+                    timeout(time: 120, unit: 'MINUTES') {
 
                         // something that can fail
                         sh 'mvn test -Dbrowser=chrome_remote'
@@ -33,7 +33,7 @@ pipeline {
                         // we re-throw as a different error, that would not 
                         // cause retry() to fail (workaround for issue JENKINS-51454)
                         echo 'FlowInterruptedException raised'
-                         sh 'sleep 30'
+                         sh 'sleep 1200'
                         error 'Timeout!'
 
                     } // try ends
