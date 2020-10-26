@@ -18,7 +18,7 @@ pipeline {
         }
         stage ('Test') {
             steps {
-                retry(6) {
+                retry(3) {
 
                script{
                     try {
@@ -33,7 +33,7 @@ pipeline {
                         // we re-throw as a different error, that would not 
                         // cause retry() to fail (workaround for issue JENKINS-51454)
                         echo 'FlowInterruptedException raised'
-                         sh 'sleep 1200'
+                         sh 'sleep 30'
                         error 'Timeout!'
 
                     } // try ends
