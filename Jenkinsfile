@@ -1,8 +1,8 @@
 pipeline {
-    agent 'vm-dev-test3'
-    tools {
-        maven 'Maven 3.6.3'
-        jdk 'jdk8'
+    agent {
+        node {
+            label 'TEST3'
+        }
     }
     stages {
         stage ('Initialize') {
@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('Test') {
             steps {
                 sh 'mvn -Dbrowser=chrome_remote'
             }
