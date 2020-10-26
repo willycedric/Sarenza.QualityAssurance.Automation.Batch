@@ -1,3 +1,6 @@
+
+
+
 pipeline {
     agent {
         node {
@@ -13,10 +16,27 @@ pipeline {
                 '''
             }
         }
-
         stage ('Test') {
             steps {
-                sh 'mvn test -Dbrowser=chrome_remote'
+                import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+                retry(3) {
+
+                try {
+
+                    timeout(time: 1, unit: 'MINUTES') {
+
+                        // something that can fail
+                        sh 'mvn test -Dbrowser=chrome_remote'
+                    } // timeout ends
+
+                } catch (FlowInterruptedException e) {
+                    // we re-throw as a different error, that would not 
+                    // cause retry() to fail (workaround for issue JENKINS-51454)
+                    error 'Timeout!'
+
+                } // try ends
+
+                } // retry end
             }
             post {
                 success {
@@ -26,3 +46,4 @@ pipeline {
         }
     }
 }
+
