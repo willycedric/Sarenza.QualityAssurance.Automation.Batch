@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Test') {
             steps {
-                mvn test -Dbrowser=chrome_remote
+                'mvn test -Dbrowser=chrome_remote'
             }
             post {
                 success {
