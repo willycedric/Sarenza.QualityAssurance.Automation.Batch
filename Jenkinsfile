@@ -16,28 +16,28 @@ pipeline {
                 '''
             }
         }
-
         stage ('Test') {
-                 retry(3) {
+            steps {
+                retry(3) {
 
-                try {
-
+               script{
+                    try {
                     timeout(time: 5, unit: 'MINUTES') {
 
                         // something that can fail
-                        steps {
-                               sh 'mvn test -Dbrowser=chrome_remote'
-                        }
-                    } // timeout ends
+                        sh 'mvn test -Dbrowser=chrome_remote'
+                        } // timeout ends
 
-                } catch (FlowInterruptedException e) {
-                    // we re-throw as a different error, that would not 
-                    // cause retry() to fail (workaround for issue JENKINS-51454)
-                    error 'Timeout!'
+                    } catch (FlowInterruptedException e) {
+                        // we re-throw as a different error, that would not 
+                        // cause retry() to fail (workaround for issue JENKINS-51454)
+                        error 'Timeout!'
 
-                } // try ends
+                    } // try ends
+               }// end script
 
                 } // retry end
+            }
             post {
                 success {
                     junit 'target/surefire-reports/**/*.xml'
@@ -46,10 +46,4 @@ pipeline {
         }
     }
 }
-
-
-
-
-
-
 
