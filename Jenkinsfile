@@ -26,12 +26,14 @@ pipeline {
 
                         // something that can fail
                         sh 'mvn test -Dbrowser=chrome_remote'
-                        sh 'sleep 60'
+                       
                         } // timeout ends
 
                     } catch (FlowInterruptedException e) {
                         // we re-throw as a different error, that would not 
                         // cause retry() to fail (workaround for issue JENKINS-51454)
+                        echo 'FlowInterruptedException raused'
+                         sh 'sleep 60'
                         error 'Timeout!'
 
                     } // try ends
