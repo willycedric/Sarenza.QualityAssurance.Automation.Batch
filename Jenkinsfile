@@ -29,10 +29,10 @@ pipeline {
                        
                         } // timeout ends
 
-                    } catch (FlowInterruptedException e) {
+                    } finally {
                         // we re-throw as a different error, that would not 
                         // cause retry() to fail (workaround for issue JENKINS-51454)
-                        echo 'FlowInterruptedException raused'
+                        echo 'FlowInterruptedException raised'
                          sh 'sleep 60'
                         error 'Timeout!'
 
