@@ -46,7 +46,7 @@ public class ToolsPage {
     private By _toggleIcon = By.className("glyphicon-menu-right");
     private By _logBadge = By.className("badge");
     public void openURL(){
-        _driver.get("http://wdongmo:SarMon1005*@tools.sarenza.laboa/JobAlim/Monitoring#jobalim-log");
+        _driver.get("http://wdongmo:SarMon1005*@tools.sarenza.laboc/JobAlim/Monitoring#jobalim-log");
     }
 
 
