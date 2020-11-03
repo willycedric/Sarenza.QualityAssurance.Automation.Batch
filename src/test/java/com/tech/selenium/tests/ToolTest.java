@@ -31,8 +31,8 @@ public class ToolTest {
     public void exampleTest()  throws Exception{
 
         toolsPage.openURL();
-        toolsPage.set_startDate("29/10/2020");
-        toolsPage.filter_domain("es");
+        toolsPage.set_startDate("03/11/2020");
+        toolsPage.filter_domain("eu");
         toolsPage.filter();
        Assert.assertTrue(toolsPage.get_searchResult_count()>0);
        toolsPage.toogle_lastest_log();
